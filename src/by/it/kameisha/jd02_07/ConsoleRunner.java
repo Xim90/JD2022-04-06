@@ -16,10 +16,10 @@ import java.util.concurrent.Future;
 
 public class ConsoleRunner {
     public static void main(String[] args) {
-        ExecutorService pool = Executors.newFixedThreadPool(4);
         ArrayList<Future<String>> futurePaths = new ArrayList<>();
         ArrayList<Future<List<Player>>> futurePlayerLists = new ArrayList<>();
         ArrayList<Player> newPlayerList = new ArrayList<>();
+        ExecutorService pool = Executors.newFixedThreadPool(4);
         for (int i = 1; i <= 20; i++) {
             String path = Util.getPath(ConsoleRunner.class, "repository" + File.separator + "playerList" + i + ".txt");
             futurePaths.add(pool.submit(new PlayerGeneratorTask(path)));
